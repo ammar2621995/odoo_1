@@ -17,4 +17,16 @@ class TrainingCourse (models.Model):
     end_date = fields.Datetime(string="end date") 
     duration = fields.Integer("Duration")
     course_type = fields.Selection( [ ('online','online'),('onsite','onsite')] , string = "type" , default= "online" )
-    
+
+
+    @api.constrains('start_date','end_date')
+    def checkdate(self):
+        if self.start_date and self.end_date:
+            if self.end_date<self.start_date:
+                raise ValidationError(_("error date"))
+
+    # @api.onchange('start_date','end_date')
+    # def validation_date(self):
+    #     if self.start_date and self.end_date:
+    #         if self.end_date<self.start_date:
+    #             raise ValidationError(_("error date"))
