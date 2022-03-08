@@ -41,11 +41,31 @@
       </field>
     </record>
 
+    <record id="training_course_2_view_search" model="ir.ui.view">
+      <field name="name">training_course_2_search</field>
+      <field name="model">training_course_2</field>
+      <field name="arch" type="xml">
+          <search string="Courses">
+              <field name="name" string="Name"/>
+              <field name="duration" string="Duration"/>
+              <field name="course_type" string="CourseType" />
+              <filter name="my_courses" string="My Courses" domain="[('create_uid', '=' ,'uid')]"/>
+              <filter name="online" string="OnLine" domain="[('course_type', '=' , 'online')]"/>
+              <filter name="onsite" string="On Site" domain="[('course_type', '=' ,'onsite')]"/>
+              <separator/>
+              <group expand="0" string="Group By">
+                  <filter string="Course type" name="course_type" domain="[]" context="{'group_by':'course_type'}"/>
+              </group> 
+          </search>
+      </field>
+  </record>
+
 
     <record model="ir.actions.act_window" id="training_course_action">
       <field name="name">training course</field>
       <field name="res_model">training_course_2</field>
       <field name="view_mode">tree,form</field>
+      <field name="context">{"search_default_my_courses":1}</field>
     </record>
 
 
