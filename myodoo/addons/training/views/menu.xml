@@ -1,0 +1,7 @@
+<odoo>
+    <data>
+        <menuitem name="Training2" id="base_training_menu" />
+        <menuitem name="Courses2" id="training_courses_menu" parent="base_training_menu"
+        action="training.training_course_action"/>
+    </data>
+</odoo>
