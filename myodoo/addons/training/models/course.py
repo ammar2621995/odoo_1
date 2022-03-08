@@ -11,8 +11,10 @@ class TrainingCourse (models.Model):
     _description = "second version"
     _order = "id" #way to order instance of this class
 
-    name = fields.Char(string = "name" , required = True , readonly = True , copy = False) 
+    name = fields.Char(string = "name" , required = True , readonly = False , copy = False) 
     active = fields.Boolean(string  = "Active" , default = True)
     start_date = fields.Datetime(string="Stat date") 
     end_date = fields.Datetime(string="end date") 
     duration = fields.Integer("Duration")
+    course_type = fields.Selection( [ ('online','online'),('onsite','onsite')] , string = "type" , default= "online" )
+    
