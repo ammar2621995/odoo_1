@@ -27,6 +27,9 @@
               </h1>
 
               <group>
+                <field name="resbonsabile_id"/>
+                <!-- <field name="resbonsabile_id" domain="[('is_company','=',False)]"/> -->
+
                 <field name="start_date"/>
                 <field name="end_date"/>
               </group>

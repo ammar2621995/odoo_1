@@ -17,7 +17,9 @@ class TrainingCourse (models.Model):
     end_date = fields.Datetime(string="end date") 
     duration = fields.Integer("Duration")
     course_type = fields.Selection( [ ('online','online'),('onsite','onsite')] , string = "type" , default= "online" )
-
+    resbonsabile_id = fields.Many2one('res.partner',string = "Responsible" ,ondelete = "restrict",
+        domain = [('is_company','=',False)]
+    )
 
     @api.constrains('start_date','end_date')
     def checkdate(self):
