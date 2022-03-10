@@ -1,3 +1,4 @@
+from datetime import timedelta
 from email.policy import default
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
@@ -14,14 +15,14 @@ class TrainingCourse (models.Model):
     name = fields.Char(string = "name" , required = True , readonly = False , copy = False) 
     active = fields.Boolean(string  = "Active" , default = True)
     start_date = fields.Datetime(string="Stat date") 
-    end_date = fields.Datetime(string="end date") 
+    end_date = fields.Datetime(string="end date" , compute = "_get_end_date" , store = True) 
     duration = fields.Integer("Duration")
     course_type = fields.Selection( [ ('online','online'),('onsite','onsite')] , string = "type" , default= "online" )
     resbonsabile_id = fields.Many2one('res.partner',string = "Responsible" ,ondelete = "restrict",
         domain = [('is_company','=',False)]
     )
 
-    @api.constrains('start_date','end_date')
+    @api.constrains('start_date','end_date') #save in db
     def checkdate(self):
         if self.start_date and self.end_date:
             if self.end_date<self.start_date:
@@ -32,3 +33,9 @@ class TrainingCourse (models.Model):
     #     if self.start_date and self.end_date:
     #         if self.end_date<self.start_date:
     #             raise ValidationError(_("error date"))
+
+    @api.depends('start_date', 'duration')
+    def _get_end_date(self): #on tree
+        for recorde in self: #self : list of recorde 
+            if recorde.start_date and recorde.duration:
+                recorde.end_date = recorde.start_date + timedelta(days=recorde.duration)
