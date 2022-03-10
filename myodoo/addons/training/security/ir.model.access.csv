@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_training_course,access_training_course,model_training_course_2,base.group_user,1,1,1,1
+access_course_session,access_training_course,model_training_session,base.group_user,1,1,1,1
