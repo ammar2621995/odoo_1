@@ -11,6 +11,7 @@
           <field name="end_date"/>
           <field name="duration"/>
           <field name="course_type"/>
+          <field name="material_id"/>
         </tree>
       </field>
     </record>
@@ -38,6 +39,7 @@
               <group>
                 <field name="attendance_ids" widget="many2many_tags"/>
                 <field name="course_type"/>
+                <field name="material_id"/>
               </group>
 
           </sheet>
@@ -52,6 +54,7 @@
           <search string="Courses">
               <field name="name" string="Name"/>
               <field name="duration" string="Duration"/>
+              <field name="material_id" string="Material_id"/>
               <field name="course_type" string="CourseType" />
               <filter name="my_courses" string="My Courses" domain="[('create_uid', '=' ,'uid')]"/>
               <filter name="online" string="OnLine" domain="[('course_type', '=' , 'online')]"/>
@@ -59,6 +62,7 @@
               <separator/>
               <group expand="0" string="Group By">
                   <filter string="Course type" name="course_type" domain="[]" context="{'group_by':'course_type'}"/>
+                  <filter string="Material" name="material_is" domain="[]" context="{'group_by':'material_id'}"/>
               </group> 
           </search>
       </field>

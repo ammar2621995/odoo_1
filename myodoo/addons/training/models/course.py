@@ -25,6 +25,9 @@ class TrainingCourse (models.Model):
     # if we have two table .. relation to same table 'res.partner' we should specify 
     # coloumn name of first table and second table 
     attendance_ids = fields.Many2many('res.partner',string= "Attendance")
+    material_id = fields.Many2one('product.product',string = "Material" ,ondelete = "restrict",
+        domain = [('detailed_type','=','service')]
+    )
 
     @api.constrains('start_date','end_date') #save in db
     def checkdate(self):
