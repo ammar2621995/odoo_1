@@ -16,3 +16,4 @@ class CourseSession (models.Model):
     planned_date = fields.Datetime(string = "Planned Date")
     actual_date  = fields.Datetime(string = "Actual Date" , readonly = True)
     course_id = fields.Many2one('training_course_2',string="Course")
+    course_type = fields.Selection(related = 'course_id.course_type' , string="Course Type")

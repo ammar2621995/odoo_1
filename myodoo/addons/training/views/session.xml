@@ -10,6 +10,7 @@
           <field name="planned_date"/>
           <field name="actual_date"/>
           <field name="course_id"/>
+          <field name="course_type"/>
         </tree>
       </field>
     </record>
@@ -23,9 +24,11 @@
           <sheet>
               <h1>
                 <field name="name"/>
-                <field name="course_id"/>
               </h1>
-
+              <group>
+                <field name="course_id"/>
+                <field name="course_type"/>
+              </group>
               <group>
                 <field name="planned_date"/>
                 <field name="actual_date"/>
