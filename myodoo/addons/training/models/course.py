@@ -21,6 +21,10 @@ class TrainingCourse (models.Model):
     resbonsabile_id = fields.Many2one('res.partner',string = "Responsible" ,ondelete = "restrict",
         domain = [('is_company','=',False)]
     )
+    # breake relation between this table ..
+    # if we have two table .. relation to same table 'res.partner' we should specify 
+    # coloumn name of first table and second table 
+    attendance_ids = fields.Many2many('res.partner',string= "Attendance")
 
     @api.constrains('start_date','end_date') #save in db
     def checkdate(self):

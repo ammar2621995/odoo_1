@@ -31,11 +31,12 @@
                 <!-- <field name="resbonsabile_id" domain="[('is_company','=',False)]"/> -->
 
                 <field name="start_date"/>
+                <field name="duration"/>
                 <field name="end_date"/>
               </group>
 
               <group>
-                <field name="duration"/>
+                <field name="attendance_ids" widget="many2many_tags"/>
                 <field name="course_type"/>
               </group>
 
