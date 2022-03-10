@@ -41,6 +41,17 @@
                 <field name="course_type"/>
                 <field name="material_id"/>
               </group>
+              <notebook>
+                <page string="Sessions" name="Sessions">
+                  <field name="session_ids">
+                    <tree  string="Sessions" name="Sessions">
+                      <field name="name"/>
+                      <field name="planned_date"/>
+                      <field name="actual_date"/>
+                    </tree>
+                  </field>
+                </page>
+              </notebook>
 
           </sheet>
         </form>

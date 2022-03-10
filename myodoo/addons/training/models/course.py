@@ -28,6 +28,7 @@ class TrainingCourse (models.Model):
     material_id = fields.Many2one('product.product',string = "Material" ,ondelete = "restrict",
         domain = [('detailed_type','=','service')]
     )
+    session_ids = fields.One2many('training_session','course_id',string="Session")
 
     @api.constrains('start_date','end_date') #save in db
     def checkdate(self):
