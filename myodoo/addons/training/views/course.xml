@@ -25,6 +25,11 @@
         <form>
           <sheet>
             <header>
+              <!-- type object : relation with function  -->
+              <!-- type action : it run action  -->
+              <button name="open_course_method"  type= "object" string="OPEN"> 
+
+              </button>
               <field name="state" widget="statusbar" />
             </header>
               <h1>

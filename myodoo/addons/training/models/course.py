@@ -1,4 +1,5 @@
 from datetime import timedelta
+import datetime
 from email.policy import default
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
@@ -48,3 +49,6 @@ class TrainingCourse (models.Model):
         for recorde in self: #self : list of recorde 
             if recorde.start_date and recorde.duration:
                 recorde.end_date = recorde.start_date + timedelta(days=recorde.duration)
+
+    def open_course_method(self):
+        self.update({'state': 'open' , 'start_date':datetime.datetime.now()})
