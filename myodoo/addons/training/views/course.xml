@@ -53,6 +53,8 @@
                 <field name="attendance_ids" widget="many2many_tags" attrs="{'readonly':[('state','!=','draft')]}"/>
                 <field name="course_type" attrs="{'readonly':[('state','!=','draft')]}"/>
                 <field name="material_id"/>
+                <field name="course_logo" widget="image"/>
+                <field name="course_file" />
               </group>
               <notebook>
                 <page string="Sessions" name="Sessions">

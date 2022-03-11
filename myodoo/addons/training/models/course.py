@@ -32,6 +32,9 @@ class TrainingCourse (models.Model):
     session_ids = fields.One2many('training_session','course_id',string="Session")
     state = fields.Selection([('draft','draft'),('open','open'),('close','close')] , string = "State" , default= "draft", copy=False)
 
+    course_logo = fields.Image(string = "logo" ,name= "Logo")
+    course_file = fields.Binary(string = "File" ,name= "File")
+
     @api.constrains('start_date','end_date') #save in db
     def checkdate(self):
         if self.start_date and self.end_date:
