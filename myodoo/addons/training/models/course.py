@@ -13,7 +13,7 @@ class TrainingCourse (models.Model):
     _description = "second version"
     _order = "id" #way to order instance of this class
 
-    name = fields.Char(string = "name" , required = True , readonly = False , copy = False) 
+    name = fields.Char(string = "name" , required = False , readonly = False , copy = False) 
     active = fields.Boolean(string  = "Active" , default = True)
     start_date = fields.Datetime(string="Stat date") 
     end_date = fields.Datetime(string="end date" , compute = "_get_end_date" , store = True) 
@@ -25,7 +25,7 @@ class TrainingCourse (models.Model):
     # breake relation between this table ..
     # if we have two table .. relation to same table 'res.partner' we should specify 
     # coloumn name of first table and second table 
-    attendance_ids = fields.Many2many('res.partner',string= "Attendance")
+    attendance_ids = fields.Many2many('res.partner',string= "Attendance" , states={'draft':[('readonly',False)]})
     material_id = fields.Many2one('product.product',string = "Material" ,ondelete = "restrict",
         domain = [('detailed_type','=','service')]
     )
@@ -52,3 +52,6 @@ class TrainingCourse (models.Model):
 
     def open_course_method(self):
         self.update({'state': 'open' , 'start_date':datetime.datetime.now()})
+
+    def close_course_method(self):
+        self.update({'state': 'close'})
