@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "training2",
+    'name': "training2", #technical_name
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -25,6 +25,7 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'data/server_action.xml',
         'views/session.xml',
         'views/course.xml',
         'views/templates.xml',

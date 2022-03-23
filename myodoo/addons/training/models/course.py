@@ -58,3 +58,14 @@ class TrainingCourse (models.Model):
 
     def close_course_method(self):
         self.update({'state': 'close'})
+
+    def generate_sessions(self):
+        course_sessions = [] 
+        for index in range(self.duration):
+            course_sessions.append({
+                'name': self.name,
+                'course_id': self.id,
+                'planned_date': self.start_date + timedelta(days=index)
+                                    })
+        self.env['training_session'].create(course_sessions)
+            

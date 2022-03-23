@@ -82,7 +82,7 @@
               <field name="duration" string="Duration"/>
               <field name="material_id" string="Material_id"/>
               <field name="course_type" string="CourseType" />
-              <filter name="my_courses" string="My Courses" domain="[('create_uid', '=' ,'uid')]"/>
+              <filter name="my_courses" string="My Courses" domain="[('create_uid', '=' ,uid)]"/>
               <filter name="online" string="OnLine" domain="[('course_type', '=' , 'online')]"/>
               <filter name="onsite" string="On Site" domain="[('course_type', '=' ,'onsite')]"/>
               <separator/>
